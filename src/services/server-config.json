@@ -1,3 +1,4 @@
 {
-    "host": "https://free-chazz-be.herokuapp.com"
+    "host": "https://free-chazz-be.herokuapp.com",
+    "hostfe": "https://free-chazz-fe.herokuapp.com"
 }
