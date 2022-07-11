@@ -12,6 +12,7 @@
     "axios": "^0.21.4",
     "bootstrap": "^4.6.0",
     "canvg": "^3.0.7",
+    "gh-pages": "^4.0.0",
     "matter-js": "^0.18.0",
     "poly-decomp": "^0.3.0",
     "react": "^17.0.1",
@@ -22,11 +23,14 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^0.2.4"
   },
+  "homepage": "https://derstefan.github.io/freechazzfe/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

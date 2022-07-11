@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/freechazzfe/static/css/main.d1476d3d.css",
+    "main.js": "/freechazzfe/static/js/main.f246d13c.js",
+    "static/js/377.eb54df4d.chunk.js": "/freechazzfe/static/js/377.eb54df4d.chunk.js",
+    "index.html": "/freechazzfe/index.html",
+    "main.d1476d3d.css.map": "/freechazzfe/static/css/main.d1476d3d.css.map",
+    "main.f246d13c.js.map": "/freechazzfe/static/js/main.f246d13c.js.map",
+    "377.eb54df4d.chunk.js.map": "/freechazzfe/static/js/377.eb54df4d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d1476d3d.css",
+    "static/js/main.f246d13c.js"
+  ]
+}

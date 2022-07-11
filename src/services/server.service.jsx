@@ -1,8 +1,8 @@
 import axios from 'axios';
 import serverConfig from "../services/server-config.json";
 
-
-const MAIN_API_BASE_URL = "http://" + serverConfig.host + ":8080/api";
+//// alternative "http://localhost"
+const MAIN_API_BASE_URL = serverConfig.host + ":8080/api";
 
 class ServerService {
 
