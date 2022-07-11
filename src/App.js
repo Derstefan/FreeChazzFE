@@ -18,24 +18,25 @@ import ChessPiecesComponent from './components/generator/silhouettes/chess-piece
 function App() {
   return (
     <div className="App">
-      <Router>
-        {/*<HeaderComponent />*/}
-        <div className="container">
-          <Switch>
-            <Route path="/" exact component={StartComponent}></Route>
-            <Route path="/game" exact component={GameComponent}></Route>
-            <Route path="/joingame/:id" component={JoinGameComponent}></Route>
-            <Route path="/piece/:id" component={PieceDataComponent}></Route>
-            <Route path="/pieces" component={PiecesDataComponent}></Route>
-            <Route path="/piecesymbol" component={PieceComponent}></Route>
-            <Route path="/piecesymbols" component={PiecesComponent}></Route>
-            <Route path="/chesspiecesymbol" component={ChessPieceComponent}></Route>
-            <Route path="/chesspiecessymbol" component={ChessPiecesComponent}></Route>
-          </Switch>
-        </div>
+      {/*<Router basename={process.env.PUBLIC_URL}>*/}
+      {/*<HeaderComponent />*/}
+      <HeaderComponent></HeaderComponent>
+      {/* <div className="container">
+        <Switch>
+          <Route path="/" exact component={StartComponent}></Route>
+          <Route path="/game" exact component={GameComponent}></Route>
+          <Route path="/joingame/:id" component={JoinGameComponent}></Route>
+          <Route path="/piece/:id" component={PieceDataComponent}></Route>
+          <Route path="/pieces" component={PiecesDataComponent}></Route>
+          <Route path="/piecesymbol" component={PieceComponent}></Route>
+          <Route path="/piecesymbols" component={PiecesComponent}></Route>
+          <Route path="/chesspiecesymbol" component={ChessPieceComponent}></Route>
+          <Route path="/chesspiecessymbol" component={ChessPiecesComponent}></Route>
+        </Switch>
+      </div> */}
 
-      </Router>
-    </div>
+      {/*</Router>*/}
+    </div >
   );
 }
 
