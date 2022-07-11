@@ -1,7 +1,8 @@
 {
   "name": "freechazz_frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://derstefan.github.io/freechazzfe/",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -23,7 +24,6 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^0.2.4"
   },
-  "homepage": "https://derstefan.github.io/freechazzfe/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
