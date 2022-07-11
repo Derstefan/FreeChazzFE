@@ -1,0 +1,30 @@
+{
+    "squareSize": 45,
+    "boardTopx": 30,
+    "boardTopy": 30,
+    "updateInterval": 2000,
+    "board": {
+        "color1": "#D2B48C",
+        "color2": "PeachPuff",
+        "smallImage": {
+            "wScale": 0.8,
+            "hScale": 0.9,
+            "xOffset": 0.115,
+            "yOffset": 0.05
+        }
+    },
+    "card": {
+        "width": 160,
+        "height": 550,
+        "xTop": 0,
+        "yOffset": 30,
+        "imageWidth": 100,
+        "imageHeight": 120,
+        "actionsSize": 9,
+        "actionsOffsetX": 13,
+        "actionsOffsetY": 190
+    },
+    "animation": {
+        "startFrame": 3000
+    }
+}
