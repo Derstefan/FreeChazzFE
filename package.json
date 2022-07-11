@@ -1,8 +1,7 @@
 {
   "name": "freechazz_frontend",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "https://derstefan.github.io/freechazzfe/",
+  "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -28,9 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
