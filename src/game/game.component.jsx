@@ -20,14 +20,15 @@ class GameComponent extends Component {
             gameId: JSON.parse(localStorage.getItem("auth")).gameId,
             me: JSON.parse(localStorage.getItem("auth")).player,
             inviteLink: serverConfig.hostfe + "/joingame/" + JSON.parse(localStorage.getItem("auth")).gameId,
+            seed: JSON.parse(localStorage.getItem("auth")).seed,
 
             //updater
             isInited: false,
 
 
             //game consts
-            player1: {},
-            player2: {},
+            player1: null,
+            player2: null,
             width: 16,
             height: 16,
             pieceImagesSmall: {}, // images of pieces
@@ -300,7 +301,7 @@ class GameComponent extends Component {
     }
 
     drawMethod() {
-        const { width, height, boardView, selectedField, me, pieceImagesSmall, isInited, winner, pieceId, selectedPiece, pieceCard, actions, pieceImages, engine, matterBodies, player1, player2, round } = this.state;
+        const { width, height, boardView, selectedField, me, pieceImagesSmall, isInited, winner, pieceId, selectedPiece, pieceCard, actions, pieceImages, engine, matterBodies, player1, player2, round, seed } = this.state;
 
 
         const draw = (ctx, frameCount) => {
@@ -315,7 +316,10 @@ class GameComponent extends Component {
                 if (player1 !== null && player2 != null) {
                     ctx.font = "10px Arial";
                     let txt = player1.name + "  vs.  " + player2.name + "       round: " + round;
+                    let txt2 = "     seed: " + seed;
+
                     ctx.fillText(txt, boardTopx, boardTopy - 10);
+                    ctx.fillText(txt2, ctx.canvas.width - Config.card.width * 1.5, ctx.canvas.height - 2);
                 }
 
                 //draw card

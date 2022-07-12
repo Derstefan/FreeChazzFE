@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import mainService from '../services/main.service';
+import { Button, TextField } from '@mui/material';
 
 class JoinGameComponent extends Component {
     constructor(props) {
@@ -13,23 +14,23 @@ class JoinGameComponent extends Component {
         this.changeName = this.changeName.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         // EmployeeService.getEmployeeById(this.state.id).then( res => {
         //     this.setState({employee: res.data});
         // })
     }
 
-    joinGame(){
-        const {gameId,name} = this.state;
-        const {history} = this.props;
+    joinGame() {
+        const { gameId, name } = this.state;
+        const { history } = this.props;
         console.log("join game");
-        mainService.joinGame(gameId,name).then((res) => {
+        mainService.joinGame(gameId, name).then((res) => {
             console.log(res.data);
-            localStorage.setItem("auth",JSON.stringify(res.data))
- 
+            localStorage.setItem("auth", JSON.stringify(res.data))
+
             history.push("/game");
 
- 
+
         });
     }
 
@@ -38,12 +39,12 @@ class JoinGameComponent extends Component {
     }
 
     render() {
-        const {name} = this.state;
+        const { name } = this.state;
         return (
             <div>
                 <div className="m-5" >
-                    <input value={name} onChange={this.changeName} />
-                    <button type="button" className="btn btn primary" onClick={this.joinGame}>join Game</button>
+                    <TextField value={name} onChange={this.changeName} />
+                    <Button type="button" onClick={this.joinGame}>join Game</Button>
                 </div>
             </div>
         )
