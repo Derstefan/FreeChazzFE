@@ -315,7 +315,7 @@ class GameComponent extends Component {
 
                 if (player1 !== null && player2 != null) {
                     ctx.font = "10px Arial";
-                    let txt = player1.name + "  vs.  " + player2.name + "       round: " + round;
+                    let txt = player1.name + "  vs.  " + player2.name + "       round: " + Math.round(round / 2);
 
                     ctx.fillText(txt, boardTopx, boardTopy - 10);
                 }

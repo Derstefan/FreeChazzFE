@@ -11,23 +11,25 @@ class StartComponent extends Component {
             name: "player1",
             seed: "",
             size: "small",
+            type: "sp",
             isActive: false
         }
         this.changeName = this.changeName.bind(this);
         this.changeSeed = this.changeSeed.bind(this);
         this.changeSize = this.changeSize.bind(this);
+        this.changeType = this.changeType.bind(this);
         this.startGame = this.startGame.bind(this);
     }
 
 
     startGame() {
-        const { name, seed, size } = this.state;
+        const { name, seed, size, type } = this.state;
         const { history } = this.props;
 
         const realSize = size !== "" ? size : null;
 
 
-        const params = { seed: seed, size: realSize };
+        const params = { seed: seed, size: realSize, type: type };
         mainService.startNewGameWithParams(name, params).then((res) => {
             console.log(res.data);
             localStorage.setItem("auth", JSON.stringify(res.data))
@@ -49,6 +51,9 @@ class StartComponent extends Component {
     changeSize(event) {
         this.setState({ size: event.target.value });
     }
+    changeType(event) {
+        this.setState({ type: event.target.value });
+    }
 
     handleShow = () => {
         this.setState({ isActive: true });
@@ -59,7 +64,7 @@ class StartComponent extends Component {
     };
 
     render() {
-        const { name, seed, size } = this.state;
+        const { name, seed, size, type } = this.state;
         return (
             <div>
                 <div class="m-5">
@@ -71,10 +76,11 @@ class StartComponent extends Component {
                     <div class="m-5" >
                         <TextField id="filled-basic" label="Seed" variant="standard" value={seed} onChange={this.changeSeed} />
                     </div>
-                    <label>
+
+                    <div class="m-5" >
 
                         <FormControl>
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Size</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -87,8 +93,24 @@ class StartComponent extends Component {
                                 <MenuItem value="big">big</MenuItem>
                             </Select>
                         </FormControl>
+                    </div>
 
-                    </label>
+                    <div class="m-5" >
+                        <FormControl>
+                            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={type}
+                                label="type"
+                                onChange={this.changeType}
+                            >
+                                <MenuItem value="sp">singleplayer</MenuItem>
+                                <MenuItem value="mp">multiplayer</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </div>
+
                 </div>}
 
                 <div class="m-5" >
