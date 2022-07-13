@@ -93,6 +93,8 @@ class PieceCard {
             return "#BB55BB";
         } else if (str === "R") {
             return "#BB1111";
+        } else if (str === "C") {
+            return "#BB9988";
         } else {
             return "#666666";
         }
@@ -111,6 +113,8 @@ class PieceCard {
             return "swap positions";
         } else if (str === "R") {
             return "rush";
+        } else if (str === "C") {
+            return "cross attack";
         } else {
             return "attack or just move";
         }

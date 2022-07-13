@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import mainService from '../services/main.service';
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField, ThemeProvider } from '@mui/material';
+import Design from '../game/themes/Design';
 
 class StartComponent extends Component {
     constructor(props) {
@@ -61,13 +62,13 @@ class StartComponent extends Component {
         const { name, seed, size } = this.state;
         return (
             <div>
-                <div className="m-5">
+                <div class="m-5">
                     <TextField id="filled-basic" label="name" variant="standard" value={name} onChange={this.changeName} />
                 </div>
-                {this.state.isActive !== true && (<label onClick={this.handleShow}>more details...</label>)}
+                {this.state.isActive !== true && (<label onClick={this.handleShow}>more details?</label>)}
                 {this.state.isActive && <div id="params">
 
-                    <div className="m-5" >
+                    <div class="m-5" >
                         <TextField id="filled-basic" label="Seed" variant="standard" value={seed} onChange={this.changeSeed} />
                     </div>
                     <label>
@@ -90,8 +91,10 @@ class StartComponent extends Component {
                     </label>
                 </div>}
 
-                <div className="m-5" >
-                    <Button type="button" onClick={this.startGame}>new Game</Button>
+                <div class="m-5" >
+                    <ThemeProvider theme={Design.theme1}>
+                        <Button color="neutral" variant="outlined" type="button" onClick={this.startGame}>new Game</Button>
+                    </ThemeProvider>
                 </div>
             </div>
         )

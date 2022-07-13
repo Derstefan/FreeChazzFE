@@ -21,7 +21,7 @@ class GameComponent extends Component {
             me: JSON.parse(localStorage.getItem("auth")).player,
             inviteLink: serverConfig.hostfe + "/joingame/" + JSON.parse(localStorage.getItem("auth")).gameId,
             seed: JSON.parse(localStorage.getItem("auth")).seed,
-
+            version: JSON.parse(localStorage.getItem("auth")).version,
             //updater
             isInited: false,
 
@@ -301,7 +301,7 @@ class GameComponent extends Component {
     }
 
     drawMethod() {
-        const { width, height, boardView, selectedField, me, pieceImagesSmall, isInited, winner, pieceId, selectedPiece, pieceCard, actions, pieceImages, engine, matterBodies, player1, player2, round, seed } = this.state;
+        const { width, height, boardView, selectedField, me, pieceImagesSmall, isInited, winner, pieceId, selectedPiece, pieceCard, actions, pieceImages, engine, matterBodies, player1, player2, round, seed, version } = this.state;
 
 
         const draw = (ctx, frameCount) => {
@@ -316,11 +316,12 @@ class GameComponent extends Component {
                 if (player1 !== null && player2 != null) {
                     ctx.font = "10px Arial";
                     let txt = player1.name + "  vs.  " + player2.name + "       round: " + round;
-                    let txt2 = "     seed: " + seed;
 
                     ctx.fillText(txt, boardTopx, boardTopy - 10);
-                    ctx.fillText(txt2, ctx.canvas.width - Config.card.width * 1.5, ctx.canvas.height - 2);
                 }
+                ctx.font = "10px Arial";
+                let txt2 = "seed: " + seed + "      version: " + version;
+                ctx.fillText(txt2, boardTopx, ctx.canvas.height - 2);
 
                 //draw card
                 if (pieceId !== "") {
@@ -475,44 +476,28 @@ class GameComponent extends Component {
 
 
     render() {
-        const { player1, player2, round, isInited, winner, open } = this.state;
+        const { player1, player2, round, isInited, winner, open, seed } = this.state;
 
         if (isInited) {
             return (
                 <div>
-                    <div className="row">
-                        <ThemeProvider theme={Design.theme1}>
-                            <div class="col-"><Button variant="outlined" onClick={this.openModal} color="neutral">New Game</Button></div>
-                            <div class="col-"><Button variant="outlined" onClick={this.copyLink} color="neutral">Copy Invitelink</Button></div>
-                        </ThemeProvider>
-                        <div class="col-sm">
+                    <div class="row">
+                        <div class="col-9">
                             {winner === null && this.drawGameText()}
                         </div>
+                        <ThemeProvider theme={Design.theme1}>
+                            <div class="col-3"><Button variant="outlined" onClick={this.copyLink} color="neutral">Copy Invitelink</Button></div>
+                        </ThemeProvider>
 
                     </div>
-                    <div className="row">
+                    <div class="row">
                         <div class="mb-5">
                             <Canvas draw={this.drawMethod()} onClick={this.clickOnCanvas} />
 
                         </div>
                     </div >
-                    {/*new game modal??*/}
-                    <Modal
-                        open={open}
-                        onClose={this.closeModal}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box sx={Design.style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Start a new game?
-                            </Typography>
-                            <ThemeProvider theme={Design.theme1}>
-                                <Button color="neutral" onClick={this.newGame}>Yes</Button>
-                                <Button color="neutral" onClick={this.closeModal}>Cancel</Button>
-                            </ThemeProvider>
-                        </Box>
-                    </Modal>
+
+
                 </div >
             )
         }

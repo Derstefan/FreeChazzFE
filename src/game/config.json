@@ -4,8 +4,8 @@
     "boardTopy": 30,
     "updateInterval": 2000,
     "board": {
-        "color1": "#D2B48C",
-        "color2": "PeachPuff",
+        "color1": "#d0b99a",
+        "color2": "#f3dbc5",
         "smallImage": {
             "wScale": 0.8,
             "hScale": 0.9,
