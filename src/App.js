@@ -11,26 +11,28 @@ import PiecesComponent from './components/generator/pieces.component';
 import PieceDataComponent from './components/tools/piece-data.component';
 import PiecesDataComponent from './components/tools/pieces-data.component';
 import ChessPiecesComponent from './components/generator/silhouettes/chess-pieces.component';
+import MainComponent from './components/main.component';
 
 
 
 
 function App() {
   return (
-    <div className="App">
+    <div class="App">
       <Router>
-        {/*<HeaderComponent />*/}
-        <div className="container">
+        <HeaderComponent />
+        <div class="container">
           <Switch>
-            <Route path="/" exact component={StartComponent}></Route>
+            <Route path="/" exact component={MainComponent}></Route>
             <Route path="/game" exact component={GameComponent}></Route>
+            <Route path="/newgame" component={StartComponent}></Route>
             <Route path="/joingame/:id" component={JoinGameComponent}></Route>
             <Route path="/piece/:id" component={PieceDataComponent}></Route>
-            <Route path="/pieces" component={PiecesDataComponent}></Route>
+            {/* <Route path="/pieces" component={PiecesDataComponent}></Route>
             <Route path="/piecesymbol" component={PieceComponent}></Route>
             <Route path="/piecesymbols" component={PiecesComponent}></Route>
             <Route path="/chesspiecesymbol" component={ChessPieceComponent}></Route>
-            <Route path="/chesspiecessymbol" component={ChessPiecesComponent}></Route>
+            <Route path="/chesspiecessymbol" component={ChessPiecesComponent}></Route> */}
           </Switch>
         </div>
 

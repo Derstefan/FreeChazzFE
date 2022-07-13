@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import mainService from '../services/main.service';
-import { Button, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField, ThemeProvider } from '@mui/material';
+import Design from '../game/themes/Design';
 
 class StartComponent extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class StartComponent extends Component {
         this.state = {
             name: "player1",
             seed: "",
-            size: "",
+            size: "small",
             isActive: false
         }
         this.changeName = this.changeName.bind(this);
@@ -61,27 +62,39 @@ class StartComponent extends Component {
         const { name, seed, size } = this.state;
         return (
             <div>
-                <div className="m-5">
+                <div class="m-5">
                     <TextField id="filled-basic" label="name" variant="standard" value={name} onChange={this.changeName} />
                 </div>
-                {this.state.isActive !== true && (<label onClick={this.handleShow}>more details...</label>)}
+                {this.state.isActive !== true && (<label onClick={this.handleShow}>more details?</label>)}
                 {this.state.isActive && <div id="params">
 
-                    <div className="m-5" >
+                    <div class="m-5" >
                         <TextField id="filled-basic" label="Seed" variant="standard" value={seed} onChange={this.changeSeed} />
                     </div>
                     <label>
-                        Size:
-                        <select value={size} onChange={this.changeSize}>
-                            <option value="small">small</option>
-                            <option value="medium">medium</option>
-                            <option value="big">big</option>
-                        </select>
+
+                        <FormControl>
+                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={size}
+                                label="Size"
+                                onChange={this.changeSize}
+                            >
+                                <MenuItem value="small">small</MenuItem>
+                                <MenuItem value="medium">medium</MenuItem>
+                                <MenuItem value="big">big</MenuItem>
+                            </Select>
+                        </FormControl>
+
                     </label>
                 </div>}
 
-                <div className="m-5" >
-                    <Button type="button" onClick={this.startGame}>new Game</Button>
+                <div class="m-5" >
+                    <ThemeProvider theme={Design.theme1}>
+                        <Button color="neutral" variant="outlined" type="button" onClick={this.startGame}>new Game</Button>
+                    </ThemeProvider>
                 </div>
             </div>
         )

@@ -14,7 +14,7 @@ class PiecesDataComponent extends Component {
 
 
     render() {
-        return (<div className="row">
+        return (<div class="row">
             <PieceCardComponent pieceId={"" + Math.round(Math.random() * 123232189)}></PieceCardComponent>
             <PieceCardComponent pieceId={"" + Math.round(Math.random() * 123232189)}></PieceCardComponent>
             <PieceCardComponent pieceId={"" + Math.round(Math.random() * 123232189)}></PieceCardComponent>
