@@ -44,9 +44,9 @@ class JoinGameComponent extends Component {
         return (
             <div>
                 <div className="m-5" >
-                    <TextField id="filled-basic" label="Seed" variant="standard" value={name} onChange={this.changeName} />
+                    <TextField id="filled-basic" label="Seed" variant="standard" value={name} onChange={this.changeName} /><br />
                     <ThemeProvider theme={Design.theme1}>
-                        <Button type="button" onClick={this.joinGame}>join Game</Button>
+                        <Button color="neutral" type="button" onClick={this.joinGame}>join Game</Button>
                     </ThemeProvider>
                 </div>
             </div>
