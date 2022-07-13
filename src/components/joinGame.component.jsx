@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import mainService from '../services/main.service';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, ThemeProvider } from '@mui/material';
+import Design from '../game/themes/Design';
 
 class JoinGameComponent extends Component {
     constructor(props) {
@@ -43,8 +44,10 @@ class JoinGameComponent extends Component {
         return (
             <div>
                 <div className="m-5" >
-                    <TextField value={name} onChange={this.changeName} />
-                    <Button type="button" onClick={this.joinGame}>join Game</Button>
+                    <TextField id="filled-basic" label="Seed" variant="standard" value={name} onChange={this.changeName} />
+                    <ThemeProvider theme={Design.theme1}>
+                        <Button type="button" onClick={this.joinGame}>join Game</Button>
+                    </ThemeProvider>
                 </div>
             </div>
         )
