@@ -9,7 +9,7 @@ class PieceCard {
         this.canvas.height = Config.card.height;
     }
 
-    drawCanvas(actions, pieceImage, owner, isKing) {
+    drawCanvas(actions, pieceImage, owner, isKing, seed) {
         const actionsSize = Config.card.actionsSize;
         const actionsOffsetX = Config.card.actionsOffsetX;
         const actionsOffsetY = Config.card.actionsOffsetY;
@@ -67,8 +67,11 @@ class PieceCard {
                 ctx.fillText("♔", this.canvas.width - 20, 37);
             }
         }
+        ctx.fillStyle = '#000000';
+        ctx.font = "10px Arial";
+        ctx.fillText("seed: " + seed, actionsOffsetX, actionsOffsetY + actions.length * actionsSize + 1 * actionsSize + actionsSize);
         // Legend
-        for (i = 0; i < actionLegend.length; i++) {
+        for (i = 1; i < actionLegend.length + 1; i++) {
             ctx.fillStyle = this.mapActionToColor(actionLegend[i]);
             //console.log(actionLegend[i]);
             ctx.fillRect(actionsOffsetX, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize, actionsSize, actionsSize);
@@ -76,6 +79,7 @@ class PieceCard {
             ctx.fillText(this.mapActionToText(actionLegend[i]), actionsOffsetX + actionsSize * 2, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize + actionsSize);
 
         }
+
 
     }
 
@@ -95,6 +99,8 @@ class PieceCard {
             return "#BB1111";
         } else if (str === "C") {
             return "#BB9988";
+        } else if (str === "Y") {
+            return "#BB9900";
         } else {
             return "#666666";
         }
@@ -115,13 +121,15 @@ class PieceCard {
             return "rush";
         } else if (str === "C") {
             return "cross attack";
+        } else if (str === "Y") {
+            return "explosion";
         } else {
             return "attack or just move";
         }
     }
 
-    drawPieceCard(actions, pieceImage, owner, isKing) {
-        this.drawCanvas(actions, pieceImage, owner, isKing);
+    drawPieceCard(actions, pieceImage, owner, isKing, seed) {
+        this.drawCanvas(actions, pieceImage, owner, isKing, seed);
         return (
             this.canvas
         );

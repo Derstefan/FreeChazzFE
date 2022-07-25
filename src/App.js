@@ -28,11 +28,11 @@ function App() {
             <Route path="/newgame" component={StartComponent}></Route>
             <Route path="/joingame/:id" component={JoinGameComponent}></Route>
             <Route path="/piece/:id" component={PieceDataComponent}></Route>
-            {/* <Route path="/pieces" component={PiecesDataComponent}></Route>
+            <Route path="/pieces" component={PiecesDataComponent}></Route>
             <Route path="/piecesymbol" component={PieceComponent}></Route>
             <Route path="/piecesymbols" component={PiecesComponent}></Route>
             <Route path="/chesspiecesymbol" component={ChessPieceComponent}></Route>
-            <Route path="/chesspiecessymbol" component={ChessPiecesComponent}></Route> */}
+            <Route path="/chesspiecessymbol" component={ChessPiecesComponent}></Route>
           </Switch>
         </div>
 

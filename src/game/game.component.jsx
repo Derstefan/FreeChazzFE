@@ -337,7 +337,7 @@ class GameComponent extends Component {
                     ctx.fillStyle = grd;
                     ctx.fillRect(squareSize * (width + 1), + cardPicsize * 0.125, cardPicsize, cardPicsize);
 
-                    ctx.drawImage(pieceCard.drawPieceCard(actions.get(pieceId), pieceImages.get(pieceId), selectedPiece.owner, selectedPiece.king === "1"), squareSize * (width + 1), 0);
+                    ctx.drawImage(pieceCard.drawPieceCard(actions.get(pieceId), pieceImages.get(pieceId), selectedPiece.owner, selectedPiece.king === "1", selectedPiece.seed), squareSize * (width + 1), 0);
                 }
 
                 //draw board
