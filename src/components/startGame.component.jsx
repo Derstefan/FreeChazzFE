@@ -88,6 +88,7 @@ class StartComponent extends Component {
                                 label="Size"
                                 onChange={this.changeSize}
                             >
+                                <MenuItem value="tiny">tiny</MenuItem>
                                 <MenuItem value="small">small</MenuItem>
                                 <MenuItem value="medium">medium</MenuItem>
                                 <MenuItem value="big">big</MenuItem>

@@ -69,9 +69,11 @@ class PieceCard {
         }
         ctx.fillStyle = '#000000';
         ctx.font = "10px Arial";
-        ctx.fillText("seed: " + seed, actionsOffsetX, actionsOffsetY + actions.length * actionsSize + 1 * actionsSize + actionsSize);
+        // ctx.fillText("seed: " + seed, actionsOffsetX, actionsOffsetY + actions.length * actionsSize + 1.3 * actionsSize);
+
+        //console.log(actionLegend);
         // Legend
-        for (i = 1; i < actionLegend.length + 1; i++) {
+        for (i = 0; i < actionLegend.length; i++) {
             ctx.fillStyle = this.mapActionToColor(actionLegend[i]);
             //console.log(actionLegend[i]);
             ctx.fillRect(actionsOffsetX, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize, actionsSize, actionsSize);
@@ -101,6 +103,8 @@ class PieceCard {
             return "#BB9988";
         } else if (str === "Y") {
             return "#BB9900";
+        } else if (str === "Z") {
+            return "#333333";
         } else {
             return "#666666";
         }
@@ -123,6 +127,8 @@ class PieceCard {
             return "cross attack";
         } else if (str === "Y") {
             return "explosion";
+        } else if (str === "Z") {
+            return "zombie-attack";
         } else {
             return "attack or just move";
         }
