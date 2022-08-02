@@ -75,7 +75,7 @@ class PieceCardComponent extends Component {
         const draw = (ctx, frameCount) => {
             ctx.canvas.width = Config.card.width;
             ctx.canvas.height = Config.card.height;
-            ctx.drawImage(pieceCard.drawPieceCard(actions, pieceImage), 0, 0);
+            ctx.drawImage(pieceCard.drawPieceCard(actions, pieceImage, undefined, undefined, piece.seed), 0, 0);
         }
         return draw;
     }
