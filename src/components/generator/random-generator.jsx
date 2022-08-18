@@ -1,10 +1,9 @@
 import { Component } from 'react'
 
-class RandomGenerator extends Component {
+class RandomGenerator {
 
 
     constructor(str) {
-        super();
         this.tempSeed = this.hash(str);
         // console.log(this.tempSeed);
         // console.log("str=", str, "seed=", this.tempSeed);
@@ -17,7 +16,6 @@ class RandomGenerator extends Component {
     }
 
     randNumOfRange(a, b) {
-
         return Math.round(this.random() * (b - a) + a);
     }
 
