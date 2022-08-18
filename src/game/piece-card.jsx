@@ -105,6 +105,12 @@ class PieceCard {
             return "#BB9900";
         } else if (str === "Z") {
             return "#333333";
+        } else if (str === "A") {
+            return "#FFBB33";
+        } else if (str === "Q") {
+            return "#1177FF";
+        } else if (str === "L") {
+            return "#BB4444";
         } else {
             return "#666666";
         }
@@ -112,13 +118,13 @@ class PieceCard {
 
     mapActionToText(str) {
         if (str === "P") {
-            return "piece location";
+            return "the piece";
         } else if (str === "E") {
             return "attack only";
         } else if (str === "F") {
             return "move only";
         } else if (str === "M") {
-            return "walk a way";
+            return "walk";
         } else if (str === "S") {
             return "swap positions";
         } else if (str === "R") {
@@ -128,9 +134,15 @@ class PieceCard {
         } else if (str === "Y") {
             return "explosion";
         } else if (str === "Z") {
-            return "zombie-attack";
+            return "zombie-bite";
+        } else if (str === "A") {
+            return "range attack";
+        } else if (str === "Q") {
+            return "convert";
+        } else if (str === "L") {
+            return "legion attack";
         } else {
-            return "attack or just move";
+            return "draw";
         }
     }
 

@@ -14,6 +14,7 @@
     "canvg": "^3.0.7",
     "gh-pages": "^4.0.0",
     "matter-js": "^0.18.0",
+    "midi-sounds-react": "^1.2.54",
     "poly-decomp": "^0.3.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",

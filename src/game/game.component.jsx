@@ -9,7 +9,7 @@ import serverConfig from "../services/server-config.json";
 import { Engine, Runner, Composite, Bodies, Body } from 'matter-js';
 import { Box, Button, Modal, ThemeProvider, Typography } from '@mui/material';
 import Design from './themes/Design';
-
+import RandomGenerator from '../components/generator/random-generator';
 
 class GameComponent extends Component {
 
@@ -159,6 +159,7 @@ class GameComponent extends Component {
 
             //matter bodies create, add forces and composite
             if (showAnimation) {
+
                 if (deletedPieces.length !== 0) {
                     this.createMatterBodies(deletedPieces).forEach(b => {
                         Composite.add(engine.world, b.body);
@@ -273,6 +274,14 @@ class GameComponent extends Component {
         }
     }
 
+
+    playSound(pieces) {
+        // for (var i = 0; i < pieces.length; i++) {
+        //     var gen = new RandomGenerator(pieces[i].id + "");
+        //     this.midiSounds.playDrumsAt(this.midiSounds.contextTime(), [Math.floor(gen.random() * 230), Math.floor(gen.random() * 230), Math.floor(gen.random() * 230)]);
+        // }
+    }
+
     play(draw) {
         const { gameId, turn, winner } = this.state;
         if (winner === null) {
@@ -337,7 +346,7 @@ class GameComponent extends Component {
                     ctx.fillStyle = grd;
                     ctx.fillRect(squareSize * (width + 1), + cardPicsize * 0.125, cardPicsize, cardPicsize);
 
-                    ctx.drawImage(pieceCard.drawPieceCard(actions.get(pieceId), pieceImages.get(pieceId), selectedPiece.owner, selectedPiece.king === "1", selectedPiece.seed), squareSize * (width + 1), 0);
+                    ctx.drawImage(pieceCard.drawPieceCard(actions.get(pieceId), pieceImages.get(pieceId), selectedPiece.owner, selectedPiece.king === true, selectedPiece.seed), squareSize * (width + 1), 0);
                 }
 
                 //draw board
@@ -402,7 +411,7 @@ class GameComponent extends Component {
 
                                     ctx.drawImage(pieceImagesSmall.get(boardView[j][i].symbol), xOffsetPic, yOffsetPic);
                                 }
-                                if (boardView[j][i].king === "1") {
+                                if (boardView[j][i].king === true) {
                                     ctx.font = "10px Arial";
                                     ctx.fillStyle = "#111111";
                                     ctx.fillText("♔", xOffset + 0.8 * squareSize, yOffset + squareSize / 6);
@@ -496,8 +505,6 @@ class GameComponent extends Component {
 
                         </div>
                     </div >
-
-
                 </div >
             )
         }

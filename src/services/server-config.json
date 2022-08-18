@@ -1,6 +1,6 @@
 {
-    "host": "https://free-chazz-be.herokuapp.com",
-    "hostfe": "https://free-chazz-fe.herokuapp.com",
-    "host0": "http://localhost:8080",
-    "hostfe0": "http://localhost:3000"
+    "host0": "https://free-chazz-be.herokuapp.com",
+    "hostfe0": "https://free-chazz-fe.herokuapp.com",
+    "host": "http://localhost:8080",
+    "hostfe": "http://localhost:3000"
 }
