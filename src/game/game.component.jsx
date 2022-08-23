@@ -132,12 +132,12 @@ class GameComponent extends Component {
                 for (let j = 0; j < bv[0].length; j++) {
                     if (bv[i][j].symbol !== "" && pieceImagesSmall.get(bv[i][j].symbol) === undefined) {
                         var pg = new PieceGenerator(Config.squareSize * Config.board.smallImage.wScale, Config.squareSize * Config.board.smallImage.hScale, bv[i][j].seed);
-                        pieceImagesSmall.set(bv[i][j].symbol, pg.drawPieceCanvas(bv[i][j].owner));
+                        pieceImagesSmall.set(bv[i][j].symbol + bv[i][j].owner, pg.drawPieceCanvas(bv[i][j].owner, bv[i][j].lvl));
 
                         mainService.generatePiece(bv[i][j].seed).then(res2 => {
                             var pg = new PieceGenerator(Config.card.imageWidth, Config.card.imageHeight, "" + bv[i][j].seed);
-                            pieceImages.set(bv[i][j].symbol, pg.drawPieceCanvas(bv[i][j].owner))
-                            actions.set(bv[i][j].symbol, res2.data.actionMap.actions);
+                            pieceImages.set(bv[i][j].symbol + bv[i][j].owner, pg.drawPieceCanvas(bv[i][j].owner, bv[i][j].lvl))
+                            actions.set(bv[i][j].symbol + bv[i][j].owner, res2.data.actionMap.actions);
                         });
                     }
                 }
@@ -211,6 +211,7 @@ class GameComponent extends Component {
                     };
                 } else {
                     bv[i][j] = {
+                        lvl: bv[i][j].lvl,
                         symbol: bv[i][j].symbol,
                         owner: bv[i][j].owner,
                         possibleMoves: bv[i][j].possibleMoves,
@@ -259,7 +260,7 @@ class GameComponent extends Component {
                 this.setState({
                     selectedField: { x: x, y: y },
                     selectedPiece: boardView[y][x],
-                    pieceId: boardView[y][x].symbol //TODO: statt symbol pieceId
+                    pieceId: boardView[y][x].symbol + boardView[y][x].owner //TODO: statt symbol pieceId
                 });
             }
         } else {
@@ -268,7 +269,7 @@ class GameComponent extends Component {
                 this.setState({
                     selectedField: { x: x, y: y },
                     selectedPiece: boardView[y][x],
-                    pieceId: boardView[y][x].symbol //TODO: statt symbol pieceId
+                    pieceId: boardView[y][x].symbol + boardView[y][x].owner //TODO: statt symbol pieceId
                 });
             }
         }
@@ -409,7 +410,7 @@ class GameComponent extends Component {
                                     ctx.fillStyle = grd;
                                     ctx.fillRect(xOffset, yOffset, squareSize, squareSize);
 
-                                    ctx.drawImage(pieceImagesSmall.get(boardView[j][i].symbol), xOffsetPic, yOffsetPic);
+                                    ctx.drawImage(pieceImagesSmall.get(boardView[j][i].symbol + boardView[j][i].owner), xOffsetPic, yOffsetPic);
                                 }
                                 if (boardView[j][i].king === true) {
                                     ctx.font = "10px Arial";

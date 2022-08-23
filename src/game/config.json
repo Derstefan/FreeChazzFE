@@ -26,5 +26,59 @@
     },
     "animation": {
         "startFrame": 3000
+    },
+    "actions": {
+        "P": {
+            "color": "#11AA11",
+            "text": "the piece"
+        },
+        "E": {
+            "color": "#BBBB11",
+            "text": "attack only"
+        },
+        "F": {
+            "color": "#1111BB",
+            "text": "move only"
+        },
+        "M": {
+            "color": "#11BBBB",
+            "text": "walk"
+        },
+        "S": {
+            "color": "#BB55BB",
+            "text": "swap"
+        },
+        "R": {
+            "color": "#BB1111",
+            "text": "rush"
+        },
+        "C": {
+            "color": "#BB9988",
+            "text": "cross attack"
+        },
+        "Y": {
+            "color": "#BB9900",
+            "text": "explosion"
+        },
+        "Z": {
+            "color": "#333333",
+            "text": "zombie bite"
+        },
+        "A": {
+            "color": "#FFBB33",
+            "text": "range attack"
+        },
+        "Q": {
+            "color": "#1177FF",
+            "text": "convert"
+        },
+        "L": {
+            "color": "#BB4444",
+            "text": "legion attack"
+        },
+        "X": {
+            "color": "#666666",
+            "text": "draw"
+        }
     }
 }
