@@ -37,7 +37,7 @@ class PieceCard {
                         if (!actionLegend.includes(actions[i][j])) {
                             actionLegend.push(actions[i][j]);
                         }
-                        ctx.fillStyle = this.mapActionToColor(actions[i][j]);
+                        ctx.fillStyle = this.actionData(actions[i][j]).color;
                         ctx.fillRect(actionsOffsetX + i * actionsSize, offsetY, actionsSize, actionsSize);
                     }
                 }
@@ -74,77 +74,19 @@ class PieceCard {
         //console.log(actionLegend);
         // Legend
         for (i = 0; i < actionLegend.length; i++) {
-            ctx.fillStyle = this.mapActionToColor(actionLegend[i]);
+            ctx.fillStyle = this.actionData(actionLegend[i]).color;
             //console.log(actionLegend[i]);
             ctx.fillRect(actionsOffsetX, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize, actionsSize, actionsSize);
             ctx.font = "10px Arial";
-            ctx.fillText(this.mapActionToText(actionLegend[i]), actionsOffsetX + actionsSize * 2, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize + actionsSize);
+            ctx.fillText(this.actionData(actionLegend[i]).text, actionsOffsetX + actionsSize * 2, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize + actionsSize);
 
-        }
-
-
-    }
-
-
-    mapActionToColor(str) {
-        if (str === "P") {
-            return "#11AA11";
-        } else if (str === "E") {
-            return "#BBBB11";
-        } else if (str === "F") {
-            return "#1111BB";
-        } else if (str === "M") {
-            return "#11BBBB";
-        } else if (str === "S") {
-            return "#BB55BB";
-        } else if (str === "R") {
-            return "#BB1111";
-        } else if (str === "C") {
-            return "#BB9988";
-        } else if (str === "Y") {
-            return "#BB9900";
-        } else if (str === "Z") {
-            return "#333333";
-        } else if (str === "A") {
-            return "#FFBB33";
-        } else if (str === "Q") {
-            return "#1177FF";
-        } else if (str === "L") {
-            return "#BB4444";
-        } else {
-            return "#666666";
         }
     }
 
-    mapActionToText(str) {
-        if (str === "P") {
-            return "the piece";
-        } else if (str === "E") {
-            return "attack only";
-        } else if (str === "F") {
-            return "move only";
-        } else if (str === "M") {
-            return "walk";
-        } else if (str === "S") {
-            return "swap positions";
-        } else if (str === "R") {
-            return "rush";
-        } else if (str === "C") {
-            return "cross attack";
-        } else if (str === "Y") {
-            return "explosion";
-        } else if (str === "Z") {
-            return "zombie-bite";
-        } else if (str === "A") {
-            return "range attack";
-        } else if (str === "Q") {
-            return "convert";
-        } else if (str === "L") {
-            return "legion attack";
-        } else {
-            return "draw";
-        }
+    actionData(str) {
+        return Config.actions[str];
     }
+
 
     drawPieceCard(actions, pieceImage, owner, isKing, seed) {
         this.drawCanvas(actions, pieceImage, owner, isKing, seed);

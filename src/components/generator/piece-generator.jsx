@@ -14,15 +14,26 @@ class PieceGenerator {
         this.canvas2.width = width;
         this.canvas2.height = height;
         this.matterBodies = [];
+
+
+        this.owner = "P1";
+        this.lvl = 5;
     }
 
 
 
 
     randomColor() {
-        var r = Math.floor(this.gen.random() * 230).toString(16);
-        var g = Math.floor(this.gen.random() * 230).toString(16);
-        var b = Math.floor(this.gen.random() * 230).toString(16);
+        var r, g, b;
+        if (this.owner === "P1") {
+            r = Math.floor(this.gen.random() * 165 + 65).toString(16);
+            g = Math.floor(this.gen.random() * 165 + 65).toString(16);
+            b = Math.floor(this.gen.random() * 165 + 65).toString(16);
+            return "#" + r + g + b;
+        }
+        r = Math.floor(this.gen.random() * 165 + 10).toString(16);
+        g = Math.floor(this.gen.random() * 165 + 10).toString(16);
+        b = Math.floor(this.gen.random() * 165 + 10).toString(16);
         return "#" + r + g + b;
     }
 
@@ -103,7 +114,7 @@ class PieceGenerator {
 
     drawCurvedMirroredPolygon() {
 
-        var pointNumber = this.gen.randNumOfRange(3, 10);
+        var pointNumber = this.gen.randNumOfRange(3, this.mapPolygonMaxSize(this.lvl).number);
         var points = this.randomPoints(pointNumber);
         //console.log(UtilFunctions.polygonArea(points));
         var color = this.randomColor();
@@ -116,9 +127,12 @@ class PieceGenerator {
 
     drawMirroredPolygon() {
 
-        var pointNumber = this.gen.randNumOfRange(3, 10);
+        var pointNumber = this.gen.randNumOfRange(3, this.mapPolygonMaxSize(this.lvl).number);
         var points = this.randomPoints(pointNumber);
-        //console.log(UtilFunctions.polygonArea(points));
+        while (UtilFunctions.polygonArea(points) < 6.0) {
+            points = this.randomPoints(pointNumber);
+        }
+
         var color = this.randomColor();
 
 
@@ -137,7 +151,7 @@ class PieceGenerator {
 
     drawCurvedMirroredPolygonColorDiff() {
 
-        var pointNumber = this.gen.randNumOfRange(3, 10);
+        var pointNumber = this.gen.randNumOfRange(3, this.mapPolygonMaxSize(this.lvl).number);
         var points = this.randomPoints(pointNumber);
         var color = this.randomColor();
         var color2 = this.randomColor();
@@ -150,7 +164,7 @@ class PieceGenerator {
 
     drawMirroredPolygonColorDiff() {
 
-        var pointNumber = this.gen.randNumOfRange(3, 10);
+        var pointNumber = this.gen.randNumOfRange(3, this.mapPolygonMaxSize(this.lvl).number);
         var points = this.randomPoints(pointNumber);
         var color = this.randomColor();
         var color2 = this.randomColor();
@@ -186,25 +200,20 @@ class PieceGenerator {
 
 
     drawPolygons(num) {
-        return [...Array(num).keys()].map(() => this.gen.random() > 0.1 ? this.drawMirroredPolygon() : this.drawMirroredPolygonColorDiff());
+        return [...Array(num).keys()].map(() => this.gen.random() > 0.05 ? this.drawMirroredPolygon() : this.drawMirroredPolygonColorDiff());
     }
 
 
     getMatterBodies() {
-        this.drawPolygons(this.gen.randNumOfRange(3, 5));
+        this.drawPolygons(this.gen.randNumOfRange(3, this.mapPolygonMaxSize(this.lvl).corner))
         return this.matterBodies;
     }
 
-    drawPieceCanvas(owner) {
+    drawPieceCanvas(owner, lvl) {
+        this.owner = owner;
+        this.lvl = lvl;
+        ; this.drawPolygons(this.gen.randNumOfRange(3, this.mapPolygonMaxSize(lvl).corner))
 
-        this.drawPolygons(this.gen.randNumOfRange(3, 5));
-        // this.drawMirroredPolygon();
-        // this.drawMirroredPolygonColorDiff();
-        // this.drawMirroredPolygon();
-        // //this.drawMirroredPolygon();
-        // //        this.drawMirroredPolygonColorDiff();
-        // //this.drawMirroredPolygon();
-        // this.drawMirroredPolygon();
 
         return (
             this.canvas2
@@ -212,6 +221,22 @@ class PieceGenerator {
     }
 
 
+    mapPolygonMaxSize(lvl) {
+        switch (lvl) {
+            case 1:
+                return { corner: 6, number: 3 };
+            case 2:
+                return { corner: 6, number: 3 };
+            case 3:
+                return { corner: 6, number: 4 };
+            case 4:
+                return { corner: 8, number: 4 };
+            case 5:
+                return { corner: 10, number: 5 };
+            default:
+                return { corner: 5, number: 3 };
+        }
+    }
 
 
 }
