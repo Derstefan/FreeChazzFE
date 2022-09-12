@@ -38,7 +38,6 @@ class PieceCardComponent extends Component {
     componentDidMount() {
         const { pieceId } = this.props;
 
-        console.log("pieceId ", pieceId);
         if (pieceId) {
             if (pieceId !== "") {
                 mainService.generatePiece(pieceId).then(res => {
@@ -48,7 +47,6 @@ class PieceCardComponent extends Component {
                         piece: res.data,
                         pieceImage: pg.drawPieceCanvas("P1")
                     });
-                    console.log(res.data);
                 }
                 );
             }
