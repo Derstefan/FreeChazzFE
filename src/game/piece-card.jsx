@@ -16,6 +16,7 @@ class PieceCard {
         var ctx = this.ctx;
 
         if (actions !== undefined) {
+            //console.log(actions);
             ctx.canvas.width = Config.card.width;
             ctx.canvas.height = Config.card.height;
 
@@ -34,7 +35,7 @@ class PieceCard {
                         } else {
                             offsetY = actionsOffsetY + j * actionsSize
                         }
-                        if (!actionLegend.includes(actions[i][j])) {
+                        if (!actionLegend.includes(actions[i][j]) && actions[i][j] !== "P") {
                             actionLegend.push(actions[i][j]);
                         }
                         ctx.fillStyle = this.actionData(actions[i][j]).color;
@@ -79,7 +80,6 @@ class PieceCard {
             ctx.fillRect(actionsOffsetX, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize, actionsSize, actionsSize);
             ctx.font = "10px Arial";
             ctx.fillText(this.actionData(actionLegend[i]).text, actionsOffsetX + actionsSize * 2, actionsOffsetY + actions.length * actionsSize + (i + 1) * 2 * actionsSize + actionsSize);
-
         }
     }
 

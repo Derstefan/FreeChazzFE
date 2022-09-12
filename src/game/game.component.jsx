@@ -366,7 +366,7 @@ class GameComponent extends Component {
 
                 if (JSON.stringify(selectedField) !== "{}") {
                     // draw moves
-                    ctx.globalAlpha = 0.45;
+                    ctx.globalAlpha = 0.3 + 0.3 * (0.5 + 0.5 * Math.sin(Date.now() * 0.0012 * 3.1415));
                     ctx.fillStyle = (me === boardView[selectedField.y][selectedField.x].owner) ? "lightgreen" : "red";
                     for (let k = 0; k < selectedPiece.possibleMoves.length; k++) {
                         let xOffset = boardTopx + selectedPiece.possibleMoves[k].x * squareSize;
